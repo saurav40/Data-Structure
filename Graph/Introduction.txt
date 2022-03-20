@@ -1,0 +1,81 @@
+A graph is a data structure that consists of the following two components: 
+1. A finite set of vertices also called as nodes. 
+2. A finite set of ordered pair of the form (u, v) called as edge
+
+Graphs are used to represent many real-life applications: 
+
+   Graphs are used to represent networks. The networks may include paths in a city or telephone network or circuit network.
+   Graphs are also used in social networks like linkedIn, Facebook. 
+   For example:
+   In Facebook, each person is represented with a vertex(or node). Each node is a structure and contains information like person id, name, gender, and locale.
+   
+   (0)-----------(1)
+    |             |
+    |             |
+   (3)-----------(2)
+The following two are the most commonly used representations of a graph. 
+1. Adjacency Matrix 
+     0  1  2 3
+   0 0  1  0 1
+   1 1  0  1 0
+   2 0  1  0 1 
+   3 1  0  1 0
+2. Adjacency List 
+   0-->1-->3
+   1-->2-->0
+   2-->3-->1
+   3-->0-->2
+   
+   
+import java.util.*;
+
+class Graph
+{
+    static void addEdge(ArrayList<ArrayList<Integer>> adjlist,int u,int v)
+    {
+        adjlist.get(u).add(v);
+        adjlist.get(v).add(u);
+    }
+    static void printGraph(ArrayList<ArrayList<Integer>> ll)
+    {
+        for(int i=0;i<ll.size();i++)
+        {
+            System.out.print("Vertex: "+i);
+            for(int j=0;j<ll.get(i).size();j++)
+            {
+                System.out.print("-->"+ll.get(i).get(j));
+            }
+            System.out.println();
+        }
+    }
+    public static void main (String[] args) {
+        ArrayList<ArrayList<Integer>> adjlist=new ArrayList<ArrayList<Integer>>(4);
+        for(int i=0;i<4;i++)
+        {
+            adjlist.add(new ArrayList<Integer>());
+        }
+        
+        addEdge(adjlist,0,1);
+        addEdge(adjlist,0,3);
+        addEdge(adjlist,1,2);
+        addEdge(adjlist,2,3);
+        
+        printGraph(adjlist);
+        
+    
+    }
+}
+   
+ output:
+ --------------------
+Vertex: 0-->1-->3
+Vertex: 1-->0-->2
+Vertex: 2-->1-->3
+Vertex: 3-->0-->2
+---------------------
+
+ 
+
+   
+   
+   

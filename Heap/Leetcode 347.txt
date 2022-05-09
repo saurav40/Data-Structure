@@ -1,0 +1,32 @@
+LeetCode 347
+------------
+Algo:
+
+Step 1: 
+  Count Freq of Elements and store in a Map
+    {
+      mp.put(n,mp.getOrDefault(n,0)+1);
+     }
+Step 2:
+  Build MaxHeap using PriorityQueue
+   code:
+      //Declaration Of MaxHeap using PQ
+      PriorityQueue<Map.Entry<Integer,Integer>> pq =new PriorityQueue<>((X,Y)->(Y.getValue()-X.getValue()));
+      //Adding Elements to MaxHeap
+      for(Map.Entry<Integer,Integer> entry:mp.entrySet()) 
+         {
+               pq.add(entry);                                              
+         }
+    
+step 3:
+     //Fetching Key for Heap
+     List<Integer> result=new ArrayList();
+                                                       
+         while(result.size()<k)
+        {
+           Map.Entry<Integer,Integer> rm=pq.poll();
+          result.add(rm.getKey());
+        }
+     // ArrayList to Int Array
+       result.stream().mapToInt(i->i).toArray();
+  return top K element from MaxHeap
